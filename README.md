@@ -14,6 +14,6 @@ events.
 
 ## License
 
-mpv.py is Copyright(c) 2015, Lars Gustäbel <lars@gustaebel.de>
+Copyright(c) 2015, Lars Gustäbel <lars@gustaebel.de>
 
 It is distributed under the MIT License.
