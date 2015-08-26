@@ -336,6 +336,10 @@ class MPV(MPVBase):
            def on_property_time_pos(self, position):
                # This is called whenever the 'time-pos' property is updated.
                ...
+
+       Please note that callbacks are executed inside a separate thread. The
+       MPV class itself is completely thread-safe. Requests from different
+       threads to the same MPV instance are synchronized.
     """
 
     def __init__(self, *args, **kwargs):
