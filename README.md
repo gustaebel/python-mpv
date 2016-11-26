@@ -12,6 +12,8 @@ controller. There is no high-level API (yet). Instead, *mpv.py* offers
 everything you should require to implement the commands you need and to receive
 events.
 
+*mpv.py* requires Python >= 3.2.
+
 ## License
 
 Copyright(c) 2015, Lars Gustäbel <lars@gustaebel.de>
