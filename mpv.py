@@ -35,6 +35,7 @@ import threading
 import subprocess
 import inspect
 
+from distutils.spawn import find_executable
 from queue import Queue, Empty, Full
 
 
@@ -59,7 +60,7 @@ class MPVBase:
        based JSON IPC.
     """
 
-    executable = "/usr/bin/mpv"
+    executable = find_executable("mpv")
 
     default_argv = [
         "--idle",
