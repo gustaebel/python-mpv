@@ -35,7 +35,7 @@ import threading
 import subprocess
 import inspect
 
-from queue import Queue, Empty
+from queue import Queue, Empty, Full
 
 
 class MPVError(Exception):
