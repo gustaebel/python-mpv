@@ -183,7 +183,13 @@ class MPVBase:
         while not self._stop_event.is_set():
             r, w, e = select.select([self._sock], [], [], 1)
             if r:
-                b = self._sock.recv(1024)
+                try:
+                    b = self._sock.recv(1024)
+                except ConnectionResetError:
+                    self._stop_process()
+                    self._stop_event.set()
+                    break
+
                 if not b:
                     break
                 buf += b
