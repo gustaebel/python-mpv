@@ -37,6 +37,8 @@ import inspect
 
 from queue import Queue, Empty, Full
 
+TIMEOUT = 10
+
 
 class MPVError(Exception):
     pass
@@ -223,7 +225,7 @@ class MPVBase:
         if "error" in message:
             # This message is a reply to a request.
             try:
-                thread_id = self._request_queue.get(timeout=1)
+                thread_id = self._request_queue.get(timeout=TIMEOUT)
             except Empty:
                 raise MPVCommunicationError("got a response without a pending request")
 
@@ -316,7 +318,7 @@ class MPVBase:
         """Shutdown the mpv process and our communication setup.
         """
         if self.is_running():
-            self._send_request({"command": ["quit"]}, timeout=1)
+            self._send_request({"command": ["quit"]}, timeout=TIMEOUT)
             self._stop_process()
         self._stop_thread()
         self._stop_socket()
@@ -480,7 +482,7 @@ class MPV(MPVBase):
     #
     # Public API
     #
-    def command(self, *args, timeout=1):
+    def command(self, *args, timeout=TIMEOUT):
         """Execute a single command on the mpv process and return the result.
         """
         return self._send_request({"command": list(args)}, timeout=timeout)
