@@ -353,6 +353,8 @@ class MPV(MPVBase):
     """
 
     def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
         self._callbacks = {}
         self._property_serials = {}
         self._new_serial = iter(range(sys.maxsize))
@@ -372,8 +374,6 @@ class MPV(MPVBase):
                 name = method_name[3:]
                 name = name.replace("_", "-")
                 self.register_callback(name, method)
-
-        super().__init__(*args, **kwargs)
 
         # Simulate an init event when the process and all callbacks have been
         # completely set up.
