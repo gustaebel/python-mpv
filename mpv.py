@@ -66,7 +66,7 @@ class MPVBase:
     executable = find_executable("mpv")
 
     default_argv = [
-        "--idle",
+        "--idle=yes",
         "--no-input-default-bindings",
         "--no-terminal"
     ]
